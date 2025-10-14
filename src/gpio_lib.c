@@ -62,7 +62,7 @@ void pinConfigInput(uint16_t port, uint16_t bit, bool pullResistor, bool pullUP,
         *ie &= ~bit;
 }
 
-pinSetDir(uint16_t port, uint16_t bit, uint16_t val)
+void pinSetDir(uint16_t port, uint16_t bit, uint16_t val)
 {
     volatile uint8_t *dir = (volatile uint8_t *)(port + 0x04); //PxDIR register
     if (val)
@@ -71,7 +71,7 @@ pinSetDir(uint16_t port, uint16_t bit, uint16_t val)
         *dir &= ~bit;   //input
 }
 
-pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf)
+void pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf)
 {
     volatile uint8_t *sel0 = (volatile uint8_t *)(port + 0x0A); //PxSEL0
     volatile uint8_t *sel1 = (volatile uint8_t *)(port + 0x0C); //PxSEL1

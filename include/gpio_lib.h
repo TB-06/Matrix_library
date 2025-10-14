@@ -22,8 +22,8 @@ bool pinGet(uint16_t port, uint16_t bit);
 
 void pinConfigInput(uint16_t port, uint16_t bit, bool pullResistor, bool pullUP, bool IES, bool IE);
 
-pinSetDir(uint16_t port, uint16_t bit, uint16_t val);
+void pinSetDir(uint16_t port, uint16_t bit, uint16_t val);
 
-pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf);
+void pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf);
 
-#endif 
+#endif /*INCLUDE_GPIO_LIB_H_*/

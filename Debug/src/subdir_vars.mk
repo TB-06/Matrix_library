@@ -29,7 +29,6 @@ C_DEPS__QUOTED += \
 "src\main.d" 
 
 C_SRCS__QUOTED += \
-"../src/gpio_lib.c" \
 "../src/main.c" 
 
 
