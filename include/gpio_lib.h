@@ -6,13 +6,17 @@
 #ifndef INCLUDE_GPIO_LIB_H_
 #define INCLUDE_GPIO_LIB_H_
 
-typedef enum {
-    GPIO_FUNCTION,
-    ALT_FUNCTION_1,
-    ALT_FUNCTION_2,
-    ALT_FUNCTION_3
-} purposeFunction;
+#define PORT1 0x0000
+#define PORT2 0x0001
+#define PORT3 0x0020
+#define PORT4 0x0021
 
+typedef enum {
+    digital, 
+    primary, 
+    secondary, 
+    tertiary
+} purposeFunction;
 
 void pinSet(uint16_t port, uint16_t bit, bool val);
 
@@ -20,10 +24,12 @@ void pinToggle(uint16_t port, uint16_t bit);
 
 bool pinGet(uint16_t port, uint16_t bit);
 
-void pinConfigInput(uint16_t port, uint16_t bit, bool pullResistor, bool pullUP, bool IES, bool IE);
+void pinConfigInput(uint16_t port, uint16_t bit, bool pullResistor, bool pullUp, bool IES, bool IE);
 
-void pinSetDir(uint16_t port, uint16_t bit, uint16_t val);
+void pinSetDir(uint16_t port, uint16_t bit, bool val);
 
 void pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf);
 
-#endif /*INCLUDE_GPIO_LIB_H_*/
+void GPIO_init();
+
+#endif /* INCLUDE_GPIO_LIB_H_ */
