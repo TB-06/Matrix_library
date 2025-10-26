@@ -46,6 +46,6 @@ void pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf){
     }
 }
 
-void GPIO_init(){
+void unlock_GPIO(){
     PM5CTL0 &= ~LOCKLPM5;
 }

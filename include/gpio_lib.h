@@ -30,6 +30,6 @@ void pinSetDir(uint16_t port, uint16_t bit, bool val);
 
 void pinConfigFunction(uint16_t port, uint16_t bit, purposeFunction pf);
 
-void GPIO_init();
+void unlock_GPIO();
 
 #endif /* INCLUDE_GPIO_LIB_H_ */
