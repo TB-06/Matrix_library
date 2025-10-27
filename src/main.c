@@ -5,29 +5,19 @@ int main(void)
 {
     WDTCTL = WDTPW | WDTHOLD; // Stop watchdog timer
 
+    unlock_GPIO();
 
-    P1DIR |= BIT0; //set P1.0 as output
+    pinSetDir(PORT1, BIT3, 1); //set P1.3 as output
 
-    P4DIR |= BIT6; //set P4.6 as output
+    pinSetDir(PORT2, BIT6, 1); //set P2.6 as output
 
-    P4DIR |= BIT5;    //set direction for switch as input
-    P4REN |= BIT5;    //enable resistor
-    P4OUT |= BIT5;    //set resistor as pull up
+    pinSet(PORT1, BIT3, 1); //make P1.3 HIGH
 
-    PM5CTL0 &= ~LOCKLPM5; //unlock pins
+    pinSet(PORT2, BIT6, 0); //make P2.6 LOW
+    while(1){
+        pinToggle(PORT1, BIT3); //toggle P1.3
 
-    while (1)
-    {
-    if (!(P4IN & BIT5)) 
-    {
-        pinSet(PORT1, BIT0, 1);
-        pinSet(PORT4, BIT6, 0);
-    }
-    else{
-        pinSet(PORT1, BIT0, 0);
-        pinSet(PORT4, BIT6, 1);
-        }
-    __delay_cycles(1000);
+        _delay_cycles(1000000);
     }
 }
 
